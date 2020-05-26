@@ -1,0 +1,62 @@
+<div *ngIf="currentCaptura" class="edit-form">
+    <h4>Captura</h4>
+    <form>
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <input
+          type="text"
+          class="form-control"
+          id="marca"
+          [(ngModel)]="currentCaptura.marca"
+          name="marca"
+        />
+      </div>
+      <div class="form-group">
+        <label for="nombre_fantasia">Nombre de fantasía</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre_fantasia"
+          [(ngModel)]="currentCaptura.nombre_fantasia"
+          name="nombre_fantasia"
+        />
+      </div>
+      <div class="form-group">
+        <label for="denominacion">Denominación</label>
+        <input
+          type="text"
+          class="form-control"
+          id="denominacion"
+          [(ngModel)]="currentCaptura.denominacion"
+          name="denominacion"
+        />
+      </div>
+      <div class="form-group">
+        <label for="rnpa">RNPA</label>
+        <input
+          type="text"
+          class="form-control"
+          id="rnpa"
+          [(ngModel)]="currentCaptura.rnpa"
+          name="rnpa"
+        />
+      </div>
+   
+      
+    </form>
+  
+ 
+    <button class="badge badge-danger mr-2" (click)="deleteCaptura()">
+      Eliminar
+    </button>
+  
+    <button type="submit" class="badge badge-success" (click)="updateCaptura()">
+      Actualizar
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  
+  <div *ngIf="!currentCaptura">
+    <br />
+    <p>No es posible acceder a esta captura...</p>
+  </div>

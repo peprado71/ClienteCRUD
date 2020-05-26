@@ -1,0 +1,76 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar por marca"
+          [(ngModel)]="marca"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchMarca()"
+          >
+            Buscar
+          </button>
+            <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="saveCapturas()"
+          >
+            Subir Archivo
+          </button>
+          
+          <button 
+            class="btn btn-sm btn-danger" 
+            type="button"
+            (click)="removeAllCapturas()"
+            >
+            Eliminar Todos
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Lista de alimentos</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"           
+          *ngFor="let captura of capturas; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCaptura(captura, i)"       >
+          {{captura.denominacion}}
+        </li>
+      </ul>
+  
+      
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentCaptura">
+        <h4>Alimentos</h4>
+        <div>
+          <label><strong>Marca:</strong></label> {{ currentCaptura.marca }}
+        </div>       
+        <div>
+          <label><strong>Nombre de Fantasía:</strong></label>
+          {{ currentCaptura.nombre_fantasia }}
+        </div>
+        <div>
+          <label><strong>RNPA:</strong></label>
+          {{ currentCaptura.rnpa }}
+        </div>
+  
+        <a class="badge badge-warning" href="/capturas/{{ currentCaptura.id }}">
+          Modificar
+        </a>
+      </div>
+  
+      <div *ngIf="!currentCaptura">
+        <br />
+        <p>Por favor seleccionar alimento...</p>
+      </div>
+    </div>
+  </div>
